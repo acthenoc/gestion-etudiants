@@ -1,0 +1,143 @@
+/* Fond de la page */
+body {
+  margin: 0;
+  padding: 40px 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #EEF2F8;
+  color: #252B36;
+}
+
+/* Carte centrale */
+.carte {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #FFFFFF;
+  border: 1px solid #D5DEEC;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+/* Bandeau bleu en haut */
+.bandeau {
+  background-color: #123F91;
+  padding: 18px 30px;
+}
+
+.bandeau h1 {
+  margin: 0;
+  color: #FFFFFF;
+  font-size: 24px;
+  text-align: center;
+}
+
+/* Contenu de la carte */
+.contenu {
+  padding: 25px 30px 30px 30px;
+}
+
+/* Formulaire */
+.formulaire {
+  margin-bottom: 10px;
+}
+
+.champ {
+  margin-bottom: 12px;
+}
+
+.libelle {
+  margin: 0 0 6px 0;
+  font-weight: bold;
+  color: #174A9C;
+  font-size: 15px;
+}
+
+input {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  padding: 9px 10px;
+  border: 1px solid #B7CBEF;
+  border-radius: 6px;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+input:focus {
+  outline: none;
+  border-color: #123F91;
+  box-shadow: 0 0 0 3px #EAF1FF;
+}
+
+/* Boutons */
+button {
+  background-color: #123F91;
+  color: #FFFFFF;
+  border: none;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #174A9C;
+}
+
+#btnAjouter {
+  margin-top: 6px;
+}
+
+/* Titre de la liste */
+h2 {
+  color: #123F91;
+  font-size: 20px;
+  margin: 30px 0 6px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #EAF1FF;
+}
+
+.total {
+  color: #5A6478;
+  font-size: 14px;
+  margin: 8px 0 12px 0;
+}
+
+/* Chaque étudiant de la liste */
+#liste p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #F7F9FD;
+  border-left: 4px solid #123F91;
+  border-radius: 6px;
+  padding: 10px 14px;
+  margin: 8px 0;
+  color: #252B36;
+}
+
+#liste button {
+  background-color: #8B1E2D;
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+#liste button:hover {
+  background-color: #A62836;
+}
+
+/* Adaptation pour petits écrans */
+@media (max-width: 600px) {
+  .contenu {
+    padding: 20px;
+  }
+
+  .bandeau {
+    padding: 16px 20px;
+  }
+
+  input {
+    max-width: 100%;
+  }
+}

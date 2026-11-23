@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestion des étudiants</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <main class="carte">
+
+    <header class="bandeau">
+      <h1>Gestion des étudiants</h1>
+    </header>
+
+    <section class="contenu">
+
+      <div class="formulaire">
+        <div class="champ">
+          <p class="libelle">Nom</p>
+          <input type="text" id="nom">
+        </div>
+
+        <div class="champ">
+          <p class="libelle">Prénom</p>
+          <input type="text" id="prenom">
+        </div>
+
+        <button id="btnAjouter">Ajouter</button>
+      </div>
+
+      <h2>Liste des étudiants</h2>
+      <p class="total">Nombre d'étudiants : <span id="total">0</span></p>
+      <div id="liste"></div>
+
+    </section>
+
+  </main>
+
+  <script>
+    // Tableau qui contient les étudiants
+    let etudiants = [];
+
+    // Enregistre le tableau dans localStorage
+    function sauvegarderEtudiants() {
+      let texte = JSON.stringify(etudiants);
+      localStorage.setItem("etudiants", texte);
+    }
+
+    // Récupère le tableau enregistré dans localStorage
+    function chargerEtudiants() {
+      let texte = localStorage.getItem("etudiants");
+
+      if (texte !== null) {
+        etudiants = JSON.parse(texte);
+      }
+    }
+
+    // Affiche la liste et le nombre d'étudiants
+    function afficherEtudiants() {
+      let html = "";
+
+      etudiants.forEach(function (e) {
+        html += "<p>" + e.nom + " " + e.prenom +
+          " <button onclick='supprimerEtudiant(" + e.id + ")'>Supprimer</button></p>";
+      });
+
+      document.getElementById("liste").innerHTML = html;
+      document.getElementById("total").textContent = etudiants.length;
+    }
+
+    // Ajoute un étudiant
+    function ajouterEtudiant() {
+      let nom = document.getElementById("nom").value;
+      let prenom = document.getElementById("prenom").value;
+
+      if (nom === "" || prenom === "") {
+        alert("Veuillez remplir le nom et le prénom.");
+        return;
+      }
+
+      let nouvelEtudiant = {
+        id: Date.now(),
+        nom: nom,
+        prenom: prenom
+      };
+
+      etudiants.push(nouvelEtudiant);
+      sauvegarderEtudiants();
+      afficherEtudiants();
+
+      document.getElementById("nom").value = "";
+      document.getElementById("prenom").value = "";
+    }
+
+    // Supprime un étudiant grâce à son identifiant
+    function supprimerEtudiant(id) {
+      etudiants = etudiants.filter(function (e) {
+        return e.id !== id;
+      });
+
+      sauvegarderEtudiants();
+      afficherEtudiants();
+    }
+
+    // Quand on clique sur Ajouter
+    document.getElementById("btnAjouter").addEventListener("click", ajouterEtudiant);
+
+    // Au démarrage de la page : d'abord charger, ensuite afficher
+    chargerEtudiants();
+    afficherEtudiants();
+  </script>
+
+</body>
+</html>
